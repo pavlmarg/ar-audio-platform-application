@@ -1,0 +1,17 @@
+kafka:
+  kraft:
+    enabled: true
+  zookeeper:
+    enabled: false
+  controller:
+    replicaCount: 1
+    persistence:
+      enabled: false 
+  broker:
+    replicaCount: 1
+    persistence:
+      enabled: false
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "250m"
