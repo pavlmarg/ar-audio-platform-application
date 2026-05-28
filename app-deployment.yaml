@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audio-processor
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: audio-processor
+  template:
+    metadata:
+      labels:
+        app: audio-processor
+    spec:
+      containers:
+        - name: application
+          image: araudioacpavlmarg123.azurecr.io/ar-audio-processor:v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka:9092"
